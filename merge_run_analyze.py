@@ -1,4 +1,7 @@
-"""Vina Virtual Screening --> Run & Analyze"""
+"""
+Vina Virtual Screening --> Run & Analyze
+By: João Silva (jpbs98)
+"""
 import os
 
 # get path
