@@ -8,7 +8,7 @@ path = os.getcwd()
 
 # run iterative vina command on all ligands --> change receptor name
 for file in os.listdir(path):
-    if file == "STEAP1Hem.pdbqt":
+    if file == "receptor.pdbqt":
         continue
     elif file.endswith(".pdbqt"):
         cmd = f"vina --config conf.txt --ligand {file}"
