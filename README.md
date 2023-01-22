@@ -11,4 +11,3 @@ Also grabs the best binding affinity energy for each ligand and outputs in a sor
 
 Don't forget to change the receptor name in `receptor.pdbqt` for your protein file name.
 
-__Important: Made for Vina v1.1.2. Will not work for newer releases.__
