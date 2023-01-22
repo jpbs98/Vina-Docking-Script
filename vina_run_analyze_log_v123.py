@@ -47,4 +47,5 @@ print("Analysis complete. See your results in the results_sorted.txt file.")
 
 time2 = time.time()
 
+print("\n")
 print(time2 - time1)
