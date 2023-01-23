@@ -11,13 +11,18 @@ for file in os.listdir(path):
     if file == "receptor.pdbqt":
         continue
     elif file.endswith(".pdbqt"):
+        # call vina
         cmd = f"vina --config conf.txt --ligand {file}"
         output = os.popen(cmd).read()
+        # display ligand output in terminal 
         print(output)
+        # dump to log file
         with open(f"{file}_log.log", "w") as log:
             log.write(output)
 
+# create results.txt with all num_modes for all ligands
 os.system("tail -n14 *.log > results.txt")
+
 
 print("\n")
 print("Starting analysis...")
