@@ -1,5 +1,6 @@
 import os
 import time
+import shutil
 
 # get paths and set destination folders
 path = os.getcwd()
@@ -44,6 +45,7 @@ print("\n")
 print("Analysis complete. See your results in the results_sorted.txt file.")
 
 time2 = time.time()
+runtime = time2-time1
 
 print("\n")
 print(str(runtime/60) + " mins runtime.")
