@@ -1,10 +1,13 @@
 import os
 import time
 
-time1 = time.time()
-
-# get path
+# get paths and set destination folders
 path = os.getcwd()
+OUTS = path + "/outputs/"
+RES = path + "/results"
+
+# start time
+time1 = time.time()
 
 # run iterative vina command on all ligands --> change receptor name
 for file in os.listdir(path):
@@ -43,4 +46,18 @@ print("Analysis complete. See your results in the results_sorted.txt file.")
 time2 = time.time()
 
 print("\n")
-print(time2 - time1)
+print(str(runtime/60) + " mins runtime.")
+
+# move out structures to separate folder
+if not os.path.exists(OUTS):
+    os.mkdir(OUTS)
+for file in os.listdir(path):
+    if file.endswith("_out.pdbqt"):
+        shutil.move(file, OUTS)
+
+# move results to separate folder
+if not os.path.exists(RES):
+    os.mkdir(RES)
+for file in os.listdir(path):
+    if file.startswith("results"):
+        shutil.move(file, RES)
