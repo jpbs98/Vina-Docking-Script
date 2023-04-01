@@ -16,6 +16,7 @@ def move_results(extension, path, position):
         if file.position(extension):
             shutil.move(file, path)
     
+
 # start time
 time1 = time.time()
 
@@ -74,10 +75,8 @@ print("\n")
 print(str(runtime/60) + " mins runtime.")
 
 # move logs to separate folder
-move_results(".log", LOGS, endswith)
+move_results(".log", LOGS, "endswith")
 # move out structures to separate folder
-move_results("_out.pdbqt", OUTS, endswith)
+move_results("_out.pdbqt", OUTS, "endswith")
 # move results to separate folder
-move_results("results", RES, startswith)
-
-
+move_results("results", RES, "startswith")
