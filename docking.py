@@ -23,7 +23,7 @@ def move_results(extension, path, position):
 os.system("obabel conformers.sdf -O prep_subs.sdf -p")
 
 # split sdf library 
-os.system("obabel -isdf prep_subs.sdf -osdf -O *.sdf --split")
+os.system("obabel -isdf prep_subs.sdf -osdf -O *.sdf --split --unique")
 
 # convert to pdbqt
 os.system("obabel -isdf *.sdf -opdbqt -O*.pdbqt")
