@@ -25,7 +25,8 @@ def setup_logging():
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
-        handlers=[logging.FileHandler("docking_log.txt"), logging.StreamHandler()]
+        handlers=[logging.FileHandler(
+            "docking_log.txt"), logging.StreamHandler()]
     )
 
 
@@ -66,7 +67,8 @@ def run_subprocess(cmd):
 
     """
     try:
-        completed_process = subprocess.run(cmd, shell=True, text=True, capture_output=True, check=True)
+        completed_process = subprocess.run(
+            cmd, shell=True, text=True, capture_output=True, check=True)
         return completed_process.stdout
     except subprocess.CalledProcessError as err:
         logging.error(f"Error executing command: {err.stderr}")
@@ -124,7 +126,7 @@ def extract_and_sort_results():
     It creates a sorted 'results.txt' file based on the scores, displaying the top hits first.
     """
     os.system("tail -n14 *.log > results.txt")
-    
+
     print("\n")
     print("Starting analysis...")
     dct = {}
@@ -141,7 +143,8 @@ def extract_and_sort_results():
                     logging.error(f"Error processing {file}")
 
     # Order the dictionary to output top hits first
-    ordered_dict = {k: v for k, v in sorted(dct.items(), key=lambda item: item[1])}
+    ordered_dict = {k: v for k, v in sorted(
+        dct.items(), key=lambda item: item[1])}
 
     # Output to .txt file
     with open("results_sorted.txt", "w", encoding="utf-8") as out:
@@ -166,7 +169,7 @@ def main():
 
     # move sdfs to backup
     move_results(".sdf", BACKUP, "endswith")
-    
+
     # Run Vina on ligands
     run_vina_on_ligands()
 
@@ -193,7 +196,8 @@ def main():
 
 if __name__ == "__main__":
     # Set up argparse to handle command-line arguments
-    parser = argparse.ArgumentParser(description="Script for Vina Standard Docking")
+    parser = argparse.ArgumentParser(
+        description="Script for Vina Standard Docking")
     parser.add_argument(
         "--receptor",
         required=True,
